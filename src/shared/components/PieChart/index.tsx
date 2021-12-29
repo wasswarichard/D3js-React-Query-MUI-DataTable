@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import './index.scss';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef, FC } from 'react';
 import classnames from 'classnames';
 interface PieChartData {
    label: string;
@@ -11,11 +11,11 @@ interface PieChartProps {
    setSelectedPieChartArea: (value: string) => void;
 }
 
-const PieChart: React.FC<PieChartProps> = ({ data, setSelectedPieChartArea }) => {
+const PieChart: FC<PieChartProps> = ({ data, setSelectedPieChartArea }) => {
    const pieChart = useRef<SVGSVGElement | null>(null);
 
    useEffect(() => {
-      const drawChart = () => {
+      (() => {
          const colors = d3.scaleOrdinal(['#6b3669', '#990b48']);
          const pieChartData = d3.pie<PieChartData>().value((d) => d.value)(data);
          const segments = d3
@@ -50,9 +50,7 @@ const PieChart: React.FC<PieChartProps> = ({ data, setSelectedPieChartArea }) =>
             .text((d) => (d.data.value > 0 ? `${d.data.label} : ${d.data.value}` : ''))
             .attr('transform', (d) => `translate(${segments.centroid(d)})`)
             .style('text-anchor', 'middle');
-      };
-
-      drawChart();
+      })();
    }, [data, setSelectedPieChartArea]);
 
    if (
