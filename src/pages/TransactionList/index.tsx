@@ -5,7 +5,7 @@ import { Breadcrumbs, Loader, ErrorMessage, TransactionCard } from 'shared/compo
 import useCommonStyles from 'shared/theme/commonStyles';
 import { useQuery } from 'react-query';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import * as api from '../../services/accountRequests';
+import * as api from '../../api/accounts';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
 import { mergeAccountsToClients } from '../../shared/utils';
 import { ITransaction, transactionCardProps } from '../../shared/types';

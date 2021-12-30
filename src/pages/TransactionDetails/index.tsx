@@ -5,7 +5,7 @@ import { Breadcrumbs, Loader, DataTable, ErrorMessage } from 'shared/components'
 import { ColumnConfig, ITransaction } from 'shared/types';
 import useCommonStyles from 'shared/theme/commonStyles';
 import { useQuery } from 'react-query';
-import * as api from '../../services/accountRequests';
+import * as api from '../../api/accounts';
 import { SetStateAction, useEffect, useState } from 'react';
 import { formatTableData } from '../../shared/utils';
 

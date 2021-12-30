@@ -109,6 +109,8 @@ const TransactionCard = ({ transaction }: { transaction: transactionCardProps })
                      }}
                      data={accountTransaction.accounts || []}
                      strokeWidth={4}
+                     scaleBandPadding={0.05}
+                     useScaleBands={{ x: true, y: true }}
                   />
                </Grid>
             </Grid>
