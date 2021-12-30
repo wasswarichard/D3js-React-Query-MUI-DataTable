@@ -7,7 +7,7 @@ const Routes = () => {
    return (
       <Router>
          <Switch>
-            <Route path="/transaction/:id">
+            <Route path="/transaction/:id/:name">
                <TransactionDetails />
             </Route>
             <Route path="/" exact>

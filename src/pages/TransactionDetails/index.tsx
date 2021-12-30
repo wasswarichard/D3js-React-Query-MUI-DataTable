@@ -11,11 +11,12 @@ import { formatTableData } from '../../shared/utils';
 
 interface RouteParams {
    id: string;
+   name: string
 }
 
 const TransactionDetails = () => {
    const commonClasses = useCommonStyles();
-   const { id } = useParams<RouteParams>();
+   const { id, name } = useParams<RouteParams>();
    const { isLoading, data, error } = useQuery(['todos', id], () => api.getAccount(id));
    const [formattedTransactions, setFormattedTransactions] = useState<ITransaction[]>([]);
 
@@ -66,7 +67,7 @@ const TransactionDetails = () => {
       },
    ];
 
-   const dataTableTitle = <Typography variant="h5">Account Transactions</Typography>;
+   const dataTableTitle = <Typography variant="h6">Client Name: {name}</Typography>;
 
    return (
       <Grid

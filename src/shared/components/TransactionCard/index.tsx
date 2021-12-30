@@ -13,6 +13,7 @@ const TransactionCard = ({ transaction }: { transaction: transactionCardProps })
    const [selectedCardType, setSelectedCardType] = useState<string[]>([]);
    const [accountTransaction, setAccountTransactions] = useState<transactionCardProps>(transaction);
    const [selectedPieChartArea, setSelectedPieChartArea] = useState<string>('');
+   const clientName = `${transaction.name} , ${(transaction.firstName || transaction.firstname)}`
 
    useEffect(() => {
       if (selectedCardType.length > 0) {
@@ -72,7 +73,7 @@ const TransactionCard = ({ transaction }: { transaction: transactionCardProps })
             <Grid item xs={6} container spacing={0}>
                <Grid item xs={12} container justifyContent="center">
                   <Link
-                     to={`/transaction/${transaction.id}`}
+                     to={`/transaction/${transaction.id}/${clientName}`}
                      style={{ textDecoration: 'none', marginRight: '20px' }}
                   >
                      <Button variant="contained" endIcon={<ViewColumnIcon />}>
