@@ -13,7 +13,7 @@ const TransactionCard = ({ transaction }: { transaction: transactionCardProps })
    const [selectedCardType, setSelectedCardType] = useState<string[]>([]);
    const [accountTransaction, setAccountTransactions] = useState<transactionCardProps>(transaction);
    const [selectedPieChartArea, setSelectedPieChartArea] = useState<string>('');
-   const clientName = `${transaction.name} , ${(transaction.firstName || transaction.firstname)}`
+   const clientName = `${transaction.name} , ${transaction.firstName || transaction.firstname}`;
 
    useEffect(() => {
       if (selectedCardType.length > 0) {

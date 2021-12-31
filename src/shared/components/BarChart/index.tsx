@@ -39,67 +39,64 @@ const BarChart: FC<BarChartProps> = ({
    ...restProps
 }: BarChartProps) => {
    const svgRef = useRef<SVGSVGElement | null>(null);
-   const { margin, width, height } = svgProps;
    const tooltipRef = createRef();
 
-   const xScale = d3
-      .scaleBand()
-      .range([0, width])
-      .domain(data.map((d: { label: string }) => d.label))
-      .padding(scaleBandPadding);
-
-   const yScale = d3
-      .scaleBand()
-      .range([height, 0])
-      .domain(data.map((d) => String(d.value)))
-      .padding(scaleBandPadding);
-
    useEffect(() => {
-      draw();
-   }, [data]);
+      (() => {
+         const { margin, width, height } = svgProps;
+         const xScale = d3
+            .scaleBand()
+            .range([0, width])
+            .domain(data.map((d: { label: string }) => d.label))
+            .padding(scaleBandPadding);
 
-   function draw() {
-      d3.select(svgRef.current).selectAll('*').remove();
+         const yScale = d3
+            .scaleBand()
+            .range([height, 0])
+            .domain(data.map((d) => String(d.value)))
+            .padding(scaleBandPadding);
+         d3.select(svgRef.current).selectAll('*').remove();
 
-      d3.select(svgRef.current)
-         .attr('width', width + margin.left + margin.right)
-         .attr('height', height + margin.top + margin.bottom)
-         .append('g')
-         .attr('transform', `translate(${margin.left},${margin.top})`);
+         d3.select(svgRef.current)
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+            .append('g')
+            .attr('transform', `translate(${margin.left},${margin.top})`);
 
-      const svg = d3.select(svgRef.current).select('g');
-      const colors = d3.scaleOrdinal(['#ffa822', '#134e6f', '#ff6150', '#1ac0c6', '#dee0e6']);
-      svg.selectAll('bar')
-         .data(data)
-         .enter()
-         .append('rect')
-         .attr('fill', (d, i) => colors(String(i)))
-         .attr('x', (d: { label: string }) => xScale(d.label)!)
-         .attr('width', xScale.bandwidth())
-         .attr('y', (d: { value: number }) => yScale(String(d.value))!)
-         .attr('height', (d) => height - yScale(String(d.value))!);
+         const svg = d3.select(svgRef.current).select('g');
+         const colors = d3.scaleOrdinal(['#ffa822', '#134e6f', '#ff6150', '#1ac0c6', '#dee0e6']);
+         svg.selectAll('bar')
+            .data(data)
+            .enter()
+            .append('rect')
+            .attr('fill', (d, i) => colors(String(i)))
+            .attr('x', (d: { label: string }) => xScale(d.label)!)
+            .attr('width', xScale.bandwidth())
+            .attr('y', (d: { value: number }) => yScale(String(d.value))!)
+            .attr('height', (d) => height - yScale(String(d.value))!);
 
-      drawAxis({
-         ...axisProps,
-         ...svgProps,
-         ...restProps,
-         data,
-         svgRef,
-         xScale,
-         yScale,
-      });
+         drawAxis({
+            ...axisProps,
+            ...svgProps,
+            ...restProps,
+            data,
+            svgRef,
+            xScale,
+            yScale,
+         });
 
-      drawTooltip({
-         useScaleBands,
-         svgRef,
-         tooltipRef,
-         data,
-         xScale,
-         yScale,
-         ...svgProps,
-         ...restProps,
-      });
-   }
+         drawTooltip({
+            useScaleBands,
+            svgRef,
+            tooltipRef,
+            data,
+            xScale,
+            yScale,
+            ...svgProps,
+            ...restProps,
+         });
+      })();
+   }, [data, axisProps, restProps, scaleBandPadding, svgProps, tooltipRef, useScaleBands]);
 
    return (
       <div className="base__container">

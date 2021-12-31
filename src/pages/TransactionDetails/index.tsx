@@ -11,7 +11,7 @@ import { formatTableData } from '../../shared/utils';
 
 interface RouteParams {
    id: string;
-   name: string
+   name: string;
 }
 
 const TransactionDetails = () => {
