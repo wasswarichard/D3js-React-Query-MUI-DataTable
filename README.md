@@ -1,6 +1,6 @@
 # poc-be-rwasswa
 
-[Live Demo]( https://61ceaa2cc5975e6b3e717f8e--infallible-kare-2876f2.netlify.app/ 'D3js')
+[Live Demo](https://61ceaa2cc5975e6b3e717f8e--infallible-kare-2876f2.netlify.app/ 'D3js')
 
 ## Libraries/Frameworks used
 

@@ -16,7 +16,6 @@ const useStyles = makeStyles(() => ({
       padding: '20px 0',
    },
    dataTableContainer: {
-      minWidth: '1270px',
       maxHeight: 'calc(100vh - 300px)',
       overflow: 'auto',
       position: 'relative',

@@ -37,7 +37,7 @@ const BarChart: FC<BarChartProps> = ({
    data,
    useScaleBands,
    ...restProps
-}: BarChartProps) => {
+}) => {
    const svgRef = useRef<SVGSVGElement | null>(null);
    const tooltipRef = createRef();
 
