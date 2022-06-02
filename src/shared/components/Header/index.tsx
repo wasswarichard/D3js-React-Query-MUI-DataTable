@@ -20,7 +20,7 @@ const Header = () => {
          <Grid container className={classes.headerContainer}>
             <Grid item xs={12}>
                <Typography variant="h4" data-testid="company-logo">
-                  CluePoints
+                  D3js
                </Typography>
             </Grid>
          </Grid>

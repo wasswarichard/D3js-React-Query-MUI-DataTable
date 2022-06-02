@@ -2,7 +2,7 @@ import { ThemeProvider } from '@material-ui/core';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { useTheme } from './shared/theme';
 import { Layout } from './shared/components';
-import Routes from './Routes';
+import RoutePaths from './Routes';
 
 const App = () => {
    const { theme } = useTheme();
@@ -12,7 +12,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
          <QueryClientProvider client={client}>
             <Layout>
-               <Routes />
+               <RoutePaths />
             </Layout>
          </QueryClientProvider>
       </ThemeProvider>

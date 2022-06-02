@@ -16,7 +16,9 @@ interface RouteParams {
 
 const TransactionDetails = () => {
    const commonClasses = useCommonStyles();
+   // @ts-ignore
    const { id, name } = useParams<RouteParams>();
+   // @ts-ignore
    const { isLoading, data, error } = useQuery(['todos', id], () => api.getAccount(id));
    const [formattedTransactions, setFormattedTransactions] = useState<ITransaction[]>([]);
 

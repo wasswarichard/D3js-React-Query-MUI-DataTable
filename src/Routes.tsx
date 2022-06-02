@@ -1,24 +1,18 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TransactionDetails from './pages/TransactionDetails';
 import { PageNotFound } from './shared/components';
 import TransactionCard from './pages/TransactionList';
 
-const Routes = () => {
+const RoutePaths = () => {
    return (
-      <Router>
-         <Switch>
-            <Route path="/transaction/:id/:name">
-               <TransactionDetails />
-            </Route>
-            <Route path="/" exact>
-               <TransactionCard />
-            </Route>
-            <Route path="*">
-               <PageNotFound />
-            </Route>
-         </Switch>
-      </Router>
+      <BrowserRouter>
+         <Routes>
+            <Route path="/transaction/:id/:name" element={<TransactionDetails />} />
+            <Route path="/" element={<TransactionCard />} />
+            <Route path="*" element={<PageNotFound />} />
+         </Routes>
+      </BrowserRouter>
    );
 };
 
-export default Routes;
+export default RoutePaths;

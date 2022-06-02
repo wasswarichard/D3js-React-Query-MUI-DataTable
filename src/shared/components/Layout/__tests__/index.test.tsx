@@ -10,7 +10,7 @@ describe('Tests for Layout component', () => {
          </Layout>
       );
 
-      expect(getByTestId(Selectors.COMPANY_LOGO)).toHaveTextContent('CluePoints');
+      expect(getByTestId(Selectors.COMPANY_LOGO)).toHaveTextContent('D3js');
       expect(getByTestId(Selectors.LAYOUT_CHILD)).toHaveTextContent('Latest Transactions');
    });
 });
